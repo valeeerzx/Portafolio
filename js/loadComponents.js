@@ -29,18 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error("Error cargando about:", err));
 
     fetch("components/projects.html")
-        .then(res => res.text())
-        .then(data => {
-            const container = document.getElementById("projects-container");
-            if (!container) return;
-
-            container.innerHTML = data;
-
-            setTimeout(() => {
-                initProjectsAnimation();
-            }, 50);
+        .then(res => {
+            if (!res.ok) throw new Error("Projects no cargó");
+            return res.text();
         })
-        .catch(err => console.error("Error cargando projects:", err));
+        .then(data => {
+            document.getElementById("projects-container").innerHTML = data;
+            initProjectsAnimation();
+        })
+        .catch(err => {
+            console.error("ERROR PROJECTS:", err);
+        });
 
 });
 
