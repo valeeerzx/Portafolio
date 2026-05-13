@@ -1,8 +1,8 @@
+<!-- components/projects.html -->
 <style>
     .projects-section {
         padding: 1px 6% 100px;
         color: white;
-
         opacity: 0;
         transform: translateY(60px);
         transition: all 0.8s ease;
@@ -43,11 +43,28 @@
         background: transparent;
         color: white;
         cursor: pointer;
+        transition: 0.3s;
     }
 
     .tab.active {
         background: white;
         color: black;
+        font-weight: 600;
+    }
+
+    /* Estilos para el contenido de las pestañas */
+    .tab-content {
+        display: none;
+        animation: tabFadeIn 0.5s ease forwards;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    @keyframes tabFadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .projects-grid {
@@ -66,6 +83,8 @@
 
     .project-card:hover {
         transform: translateY(-5px);
+        background: rgba(255, 255, 255, .08);
+        border-color: rgba(255, 255, 255, .2);
     }
 
     .project-image {
@@ -121,94 +140,69 @@
         border: 1px dashed rgba(255, 255, 255, .2);
         padding: 6px 10px;
         border-radius: 999px;
-    }
-
-    a.project-status.no-link,
-    a.project-status.no-link:visited,
-    a.project-status.no-link:active,
-    a.project-status.no-link:focus {
         color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
     }
 </style>
 
-<section class="projects-section">
-
+<section class="projects-section" id="projects">
     <div class="projects-header">
-
         <h2 class="projects-title">Portafolio</h2>
-
         <p class="projects-subtitle">
             Descubre mi trayectoria a través de proyectos, certificaciones y experiencia técnica.
         </p>
 
         <div class="projects-tabs">
-            <button class="tab active">Proyectos</button>
-            <button class="tab">Certificados</button>
-            <button class="tab">Tecnologías utilizadas</button>
+            <button class="tab active" data-target="proyectos">Proyectos</button>
+            <button class="tab" data-target="certificados">Certificados</button>
+            <button class="tab" data-target="tecnologias">Tecnologías</button>
         </div>
-
     </div>
 
-    <div class="projects-grid">
-
-        <div class="project-card">
-            <div class="project-image" style="background-image: url('img/projects/Rutamaya.jpeg');">
+    <!-- PESTAÑA: PROYECTOS -->
+    <div id="proyectos" class="tab-content active">
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('img/projects/Rutamaya.jpeg');"></div>
+                <div class="project-info">
+                    <h3>Ruta Maya Travel</h3>
+                    <p>Desarrollo frontend y mejoras en plataforma web turística. Interfaces responsivas y optimización visual.</p>
+                    <div class="project-actions">
+                        <a href="https://rutamayatravel.com/" target="_blank" class="project-status no-link">Web activa</a>
+                        <a href="#" class="project-btn">Detalles →</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="project-info">
-                <h3>Ruta Maya Travel</h3>
-                <p>
-                    Desarrollo frontend y mejoras en plataforma web turística.
-                    Interfaces responsivas, optimización visual y mantenimiento continuo.
-                </p>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('img/projects/Genessis.png');"></div>
+                <div class="project-info">
+                    <h3>Genessis Travel</h3>
+                    <p>Desarrollo frontend en plataforma turística. Optimización de UI y adaptación responsiva.</p>
+                    <div class="project-actions">
+                        <a href="https://genessistravel.com/v2/" target="_blank" class="project-status no-link">Web activa</a>
+                        <a href="#" class="project-btn">Detalles →</a>
+                    </div>
+                </div>
+            </div>
 
-                <div class="project-actions">
-                    <a href="https://rutamayatravel.com/" target="_blank" class="project-status no-link">
-                        Web activa
-                    </a>
-                    <a href="#" class="project-btn">Detalles →</a>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('img/projects/GMT.png');"></div>
+                <div class="project-info">
+                    <h3>Mobile App (Flutter)</h3>
+                    <p>Desarrollo de app móvil enfocada en UX/UI con navegación intuitiva y arquitectura limpia.</p>
+                    <div class="project-actions">
+                        <span class="project-status no-link">No link</span>
+                        <a href="#" class="project-btn">Detalles →</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="project-card">
-            <div class="project-image" style="background-image: url('img/projects/Genessis.png');">
-            </div>
+    <div id="certificados" class="tab-content">
+    </div>
 
-            <div class="project-info">
-                <h3>Genessis Travel</h3>
-                <p>
-                    Desarrollo frontend en plataforma turística.
-                    Optimización de UI, componentes visuales y adaptación responsiva.
-                </p>
-
-                <div class="project-actions">
-                    <a href="https://genessistravel.com/v2/" target="_blank" class="project-status no-link">
-                        Web activa
-                    </a>
-                    <a href="#" class="project-btn">Detalles →</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-image" style="background-image: url('img/projects/GMT.png');">
-            </div>
-
-            <div class="project-info">
-                <h3>Mobile App (Flutter)</h3>
-                <p>
-                    Desarrollo de app móvil enfocada en UX/UI.
-                    Navegación intuitiva, componentes reutilizables y arquitectura limpia.
-                </p>
-
-                <div class="project-actions">
-                    <span class="project-status no-link">No link</span>
-                    <a href="#" class="project-btn">Detalles →</a>
-                </div>
-            </div>
-        </div>
-
+    <div id="tecnologias" class="tab-content">
     </div>
 </section>

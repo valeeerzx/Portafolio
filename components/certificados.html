@@ -1,3 +1,235 @@
-<section id="certificados" class="projects-section">
-    
+<section id="certificados" class="certificados">
+    <div class="certificados-grid">
+
+        <!-- Visual Studio Code -->
+        <a class="certificado-card" href="img/certificados/VSC_valeria_Kú.png" onclick="openModal(this); return false;">
+            <div class="certificado-img">
+                <div class="certificado-badge">IMG</div>
+                <img src="img/certificados/VSC_valeria_Kú.png" class="certificado-preview">
+            </div>
+            <div class="certificado-info">
+                <h3>Visual Studio Code — DevTalles</h3>
+                <span>2024</span>
+            </div>
+        </a>
+
+        <!-- TecnolochicasPRO -->
+        <a class="certificado-card" href="img/certificados/TCPRO_Valeria_Ku.png"
+            onclick="openModal(this); return false;">
+            <div class="certificado-img">
+                <div class="certificado-badge">IMG</div>
+                <img src="img/certificados/TCPRO_Valeria_Ku.png" class="certificado-preview">
+            </div>
+            <div class="certificado-info">
+                <h3>TecnolochicasPRO</h3>
+                <span>2023</span>
+            </div>
+        </a>
+
+        <!-- AWS -->
+        <a class="certificado-card" href="img/certificados/aws_discovery.png" onclick="openModal(this); return false;">
+            <div class="certificado-img">
+                <div class="certificado-badge">AWS</div>
+                <img src="img/certificados/aws_discovery.png" class="certificado-preview">
+            </div>
+            <div class="certificado-info">
+                <h3>AWS Discovery Day</h3>
+                <span>2023</span>
+            </div>
+        </a>
+
+        <!-- Cisco -->
+        <a class="certificado-card" href="img/certificados/CSNWA.jpeg" onclick="openModal(this); return false;">
+            <div class="certificado-img">
+                <div class="certificado-badge">IMG</div>
+                <img src="img/certificados/CSNWA.jpeg" class="certificado-preview">
+            </div>
+            <div class="certificado-info">
+                <h3>Introducción a Redes — Cisco</h3>
+                <span>2023</span>
+            </div>
+        </a>
+
+    </div>
 </section>
+
+<!-- MODAL -->
+<div id="imageModal" class="modal">
+    <div class="modal-box">
+        <span class="modal-close" onclick="closeModal()">×</span>
+        <img id="modalImg" class="modal-content">
+    </div>
+</div>
+
+<style>
+/* ===== SECCIÓN ===== */
+.certificados {
+    background: transparent;
+    padding: 60px 6%;
+}
+
+/* ===== GRID RESPONSIVO ===== */
+.certificados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* ===== CARD ===== */
+.certificado-card {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 12px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.35s ease;
+    overflow: hidden;
+}
+
+.certificado-card:hover {
+    transform: translateY(-6px);
+    border-color: #86f0a8;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ===== IMAGEN ===== */
+.certificado-img {
+    border-radius: 18px;
+    aspect-ratio: 16 / 10;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.certificado-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.certificado-card:hover .certificado-preview {
+    transform: scale(1.04);
+}
+
+/* ===== BADGE ===== */
+.certificado-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: rgba(134, 240, 168, 0.2);
+    color: #86f0a8;
+    border: 1px solid rgba(134, 240, 168, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+/* ===== INFO ===== */
+.certificado-info {
+    padding: 5px 10px;
+}
+
+.certificado-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    text-transform: uppercase;
+}
+
+.certificado-card span {
+    font-size: 13px;
+    color: #888;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-box {
+    position: relative;
+    padding: 10px;
+    border-radius: 18px;
+    background: rgba(20,20,20,0.9);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    animation: pop 0.25s ease;
+    max-width: 95vw;
+}
+
+.modal-content {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px;
+}
+
+.modal-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0,0,0,0.85);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* ===== ANIMACIÓN ===== */
+@keyframes pop {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .certificados {
+        padding: 40px 5%;
+    }
+
+    .certificado-card h3 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .certificados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certificado-card {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-height: 65vh;
+    }
+
+    .modal-close {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}
+</style>
