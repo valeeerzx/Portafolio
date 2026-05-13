@@ -66,6 +66,11 @@
             <span>Bootstrap 5</span>
         </div>
 
+        <div class="tech-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yii/yii-original.svg">
+            <span>Yii</span>
+        </div>
+
     </div>
 
     <h2 class="tech-title">Bases de Datos</h2>
@@ -171,96 +176,96 @@
 </section>
 
 <style>
-.tecnologias {
-    color: white;
-}
-
-.tech-title {
-    font-size: 20px;
-    margin: 35px 0 15px;
-    color: #86f0a8;
-    font-weight: 700;
-    font-family: "Space Grotesk", sans-serif;
-}
-
-.tech-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-}
-
-.tech-card {
-    background: #111;
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 18px;
-    padding: 18px;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: default;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.tech-card img {
-    width: 42px;
-    height: 42px;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease;
-    object-fit: contain;
-}
-
-.tech-card span {
-    font-size: 12px;
-    font-weight: 600;
-    color: #aaa;
-    display: block;
-    letter-spacing: 0.5px;
-}
-
-.tech-card:hover {
-    transform: translateY(-6px);
-    border-color: #86f0a8;
-    background: rgba(255, 255, 255, 0.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-.tech-card:hover img {
-    transform: scale(1.15);
-}
-
-.tech-card:hover span {
-    color: #fff;
-}
-
-@media (max-width: 1100px) {
-    .tech-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .tecnologias {
+        color: white;
     }
-}
 
-@media (max-width: 800px) {
-    .tech-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .tech-title {
+        font-size: 20px;
+        margin: 35px 0 15px;
+        color: #86f0a8;
+        font-weight: 700;
+        font-family: "Space Grotesk", sans-serif;
     }
-}
 
-@media (max-width: 500px) {
     .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
     }
-}
 
-.tab-content {
-    width: 100%;
-}
+    .tech-card {
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 18px;
+        padding: 18px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-.tab-content.active {
-    display: block;
-}
+    .tech-card img {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease;
+        object-fit: contain;
+    }
 
-.tecnologias img {
-    filter: drop-shadow(0 0 6px rgba(134, 240, 168, 0.15));
-}
+    .tech-card span {
+        font-size: 12px;
+        font-weight: 600;
+        color: #aaa;
+        display: block;
+        letter-spacing: 0.5px;
+    }
+
+    .tech-card:hover {
+        transform: translateY(-6px);
+        border-color: #86f0a8;
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .tech-card:hover img {
+        transform: scale(1.15);
+    }
+
+    .tech-card:hover span {
+        color: #fff;
+    }
+
+    @media (max-width: 1100px) {
+        .tech-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @media (max-width: 800px) {
+        .tech-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 500px) {
+        .tech-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .tab-content {
+        width: 100%;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .tecnologias img {
+        filter: drop-shadow(0 0 6px rgba(134, 240, 168, 0.15));
+    }
 </style>
