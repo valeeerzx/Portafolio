@@ -1,0 +1,214 @@
+<style>
+    .projects-section {
+        padding: 1px 6% 100px;
+        color: white;
+
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s ease;
+    }
+
+    .projects-section.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .projects-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .projects-title {
+        font-size: 48px;
+        font-family: "Space Grotesk", sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .projects-subtitle {
+        opacity: .7;
+        margin-bottom: 40px;
+    }
+
+    .projects-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+
+    .tab {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, .2);
+        background: transparent;
+        color: white;
+        cursor: pointer;
+    }
+
+    .tab.active {
+        background: white;
+        color: black;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .project-card {
+        background: rgba(255, 255, 255, .05);
+        border: 1px solid rgba(255, 255, 255, .1);
+        border-radius: 18px;
+        overflow: hidden;
+        transition: .3s;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .project-image {
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .project-info {
+        padding: 20px;
+    }
+
+    .project-info h3 {
+        margin-bottom: 8px;
+    }
+
+    .project-info p {
+        font-size: 13px;
+        opacity: .7;
+        margin-bottom: 14px;
+    }
+
+    .project-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .project-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(134, 240, 168, 0.4);
+        background: rgba(134, 240, 168, 0.08);
+        color: #86f0a8;
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.25s;
+    }
+
+    .project-btn:hover {
+        background: rgba(134, 240, 168, 0.18);
+        transform: translateY(-2px);
+    }
+
+    .project-status.no-link {
+        font-size: 12px;
+        opacity: 0.5;
+        border: 1px dashed rgba(255, 255, 255, .2);
+        padding: 6px 10px;
+        border-radius: 999px;
+    }
+
+    a.project-status.no-link,
+    a.project-status.no-link:visited,
+    a.project-status.no-link:active,
+    a.project-status.no-link:focus {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+    }
+</style>
+
+<section class="projects-section">
+
+    <div class="projects-header">
+
+        <h2 class="projects-title">Portafolio</h2>
+
+        <p class="projects-subtitle">
+            Descubre mi trayectoria a través de proyectos, certificaciones y experiencia técnica.
+        </p>
+
+        <div class="projects-tabs">
+            <button class="tab active">Proyectos</button>
+            <button class="tab">Certificados</button>
+            <button class="tab">Tecnologías utilizadas</button>
+        </div>
+
+    </div>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('img/projects/Rutamaya.jpeg');">
+            </div>
+
+            <div class="project-info">
+                <h3>Ruta Maya Travel</h3>
+                <p>
+                    Desarrollo frontend y mejoras en plataforma web turística.
+                    Interfaces responsivas, optimización visual y mantenimiento continuo.
+                </p>
+
+                <div class="project-actions">
+                    <a href="https://rutamayatravel.com/" target="_blank" class="project-status no-link">
+                        Web activa
+                    </a>
+                    <a href="#" class="project-btn">Detalles →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('img/projects/Genessis.png');">
+            </div>
+
+            <div class="project-info">
+                <h3>Genessis Travel</h3>
+                <p>
+                    Desarrollo frontend en plataforma turística.
+                    Optimización de UI, componentes visuales y adaptación responsiva.
+                </p>
+
+                <div class="project-actions">
+                    <a href="https://genessistravel.com/v2/" target="_blank" class="project-status no-link">
+                        Web activa
+                    </a>
+                    <a href="#" class="project-btn">Detalles →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('img/projects/GMT.png');">
+            </div>
+
+            <div class="project-info">
+                <h3>Mobile App (Flutter)</h3>
+                <p>
+                    Desarrollo de app móvil enfocada en UX/UI.
+                    Navegación intuitiva, componentes reutilizables y arquitectura limpia.
+                </p>
+
+                <div class="project-actions">
+                    <span class="project-status no-link">No link</span>
+                    <a href="#" class="project-btn">Detalles →</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

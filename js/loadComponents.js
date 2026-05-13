@@ -20,24 +20,27 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!container) return;
 
             container.innerHTML = data;
-            setTimeout(startTypingEffect, 50);
+
+            setTimeout(() => {
+                startTypingEffect();
+                initAboutAnimation();
+            }, 50);
         })
         .catch(err => console.error("Error cargando about:", err));
 
-    fetch("components/about.html")
-        .then(response => response.text())
+    fetch("components/projects.html")
+        .then(res => res.text())
         .then(data => {
-            const container = document.getElementById("about-container");
+            const container = document.getElementById("projects-container");
             if (!container) return;
 
             container.innerHTML = data;
 
             setTimeout(() => {
-                startTypingEffect();
-                initAboutAnimation(); // 👈 AÑADE ESTO
+                initProjectsAnimation();
             }, 50);
         })
-        .catch(err => console.error("Error cargando about:", err));
+        .catch(err => console.error("Error cargando projects:", err));
 
 });
 
@@ -98,4 +101,21 @@ function initAboutAnimation() {
     });
 
     observer.observe(about);
+}
+
+function initProjectsAnimation() {
+    const projects = document.querySelector(".projects-section");
+    if (!projects) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    observer.observe(projects);
 }
