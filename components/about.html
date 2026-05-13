@@ -1,0 +1,147 @@
+<style>
+    .about-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 180px 6%;
+        gap: 60px;
+        font-family: Inter, system-ui, sans-serif;
+        color: var(--text);
+        position: relative;
+        z-index: 5;
+    }
+
+    /* 🔥 Animación SOLO por clase show (sin romper layout) */
+    .about-left,
+    .about-right {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+
+    .about-section.show .about-left,
+    .about-section.show .about-right {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .about-left {
+        flex: 1;
+    }
+
+    .tag {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 2px;
+        opacity: .7;
+        margin-bottom: 18px;
+        color: var(--neon);
+    }
+
+    .about-left h1 {
+        font-size: 64px;
+        line-height: 1.05;
+        margin-bottom: 20px;
+        font-weight: 800;
+        font-family: "Space Grotesk", sans-serif;
+    }
+
+    .about-left p {
+        font-size: 15px;
+        opacity: .85;
+        line-height: 1.7;
+        max-width: 480px;
+    }
+
+    .quote {
+        margin-top: 18px;
+        font-style: italic;
+        opacity: .9;
+        border-left: 2px solid var(--neon);
+        padding-left: 12px;
+    }
+
+    #typing-small {
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: var(--neon);
+    }
+
+    #typing-small::after {
+        content: "|";
+        margin-left: 6px;
+        animation: blink 0.8s infinite;
+        color: var(--neon);
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .about-right img {
+        width: 340px;
+        border-radius: 150px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+
+        opacity: 0;
+        transform: scale(0.85);
+        transition: all 0.8s ease;
+    }
+
+    .about-section.show .about-right img {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    @media (max-width: 980px) {
+        .about-section {
+            flex-direction: column;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .about-left h1 {
+            font-size: 42px;
+        }
+
+        .about-right img {
+            width: 240px;
+        }
+    }
+</style>
+
+<section class="about-section">
+
+    <div class="about-left">
+
+        <span class="tag">SOBRE MÍ</span>
+
+        <h1>
+            Frontend <br>
+            Developer <br>
+        </h1>
+
+        <p>
+            <span id="typing-small"></span>
+            <br><br>
+            Me apasiona crear interfaces frontend modernas, limpias y responsivas que hagan que la experiencia del
+            usuario sea intuitiva y agradable.
+            <br><br>
+            Disfruto transformar ideas en productos digitales funcionales, cuidando tanto el diseño como la lógica
+            detrás de cada detalle.
+        </p>
+
+        <div class="quote">
+            “Convertir ideas en experiencias digitales limpias, modernas y con sentido.”
+        </div>
+
+    </div>
+
+    <div class="about-right">
+        <img src="img/profile.png" alt="profile">
+    </div>
+
+</section>
