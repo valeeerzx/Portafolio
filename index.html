@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -11,6 +12,31 @@
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
+<!-- CHATBOT CV -->
+<div class="cv-bot">
+    <button class="cv-bot-toggle" id="cvBotToggle">
+    <img src="img/Chat.png" alt="Chat Bot">
+</button>
+
+    <div class="cv-bot-box" id="cvBotBox">
+        <p>Hola 👋<br>¿Quieres descargar mi CV?</p>
+
+        <a href="assets/PDF/CV_Valeria_Ku.pdf"
+           download
+           class="cv-download-btn">
+            Descargar CV
+        </a>
+    </div>
+</div>
+
+<script>
+    const toggle = document.getElementById("cvBotToggle");
+    const box = document.getElementById("cvBotBox");
+
+    toggle.addEventListener("click", () => {
+        box.classList.toggle("active");
+    });
+</script>
 
 <body>
 
@@ -49,31 +75,34 @@
                         TWITTER (X)
                     </a>
 
-                    <a href="https://www.linkedin.com/in/valeria-k%C3%BA-220157258/"
-                        target="_blank"
+                    <a href="https://www.linkedin.com/in/valeria-k%C3%BA-220157258/" target="_blank"
                         rel="noopener noreferrer">
 
                         <span class="slash">/</span>
                         LINKEDIN
                     </a>
 
-                    <a href="https://github.com/valeeerzx"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <a href="https://github.com/valeeerzx" target="_blank" rel="noopener noreferrer">
 
                         <span class="slash">/</span>
                         GITHUB
+                    </a>
+
+                    <a href="assets/PDF/CV_Valeria_Ku.pdf" target="_blank" rel="noopener noreferrer">
+                        <span class="slash">/</span>
+                        VER CV
                     </a>
                 </nav>
             </aside>
         </main>
 
         <footer class="footer">
-            <p>E kuvaleria78@gmail.com</p>
-            <p>T 999-391-1998</p>
+            <p>E: kuvaleria78@gmail.com</p>
+            <p>T: 999-391-1998</p>
         </footer>
 
     </div>
     <script src="js/loadComponents.js"></script>
 </body>
+
 </html>

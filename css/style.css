@@ -213,12 +213,10 @@ body {
     transition-delay: .22s;
 }
 
-/* --- STAGE Y CONTENIDO --- */
 .stage {
     flex: 1;
     position: relative;
     overflow: visible;
-    isolation: isolate;
 }
 
 .glow {
@@ -229,9 +227,15 @@ body {
     width: 900px;
     height: 900px;
     border-radius: 999px;
-    background: radial-gradient(circle at 50% 50%, rgba(134, 240, 168, .65) 0%, rgba(134, 240, 168, .25) 35%, rgba(134, 240, 168, .10) 55%, rgba(134, 240, 168, 0) 75%);
+    background: radial-gradient(circle at 50% 50%,
+        rgba(134, 240, 168, .65) 0%,
+        rgba(134, 240, 168, .25) 35%,
+        rgba(134, 240, 168, .10) 55%,
+        rgba(134, 240, 168, 0) 75%);
     filter: blur(70px);
     z-index: 1;
+
+    pointer-events: none; /* ← ESTO */
 }
 
 .kicker {
@@ -263,7 +267,8 @@ body {
     bottom: -160px;
     transform: translateX(-50%);
     height: 92%;
-    z-index: 12;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .portrait img {
@@ -318,7 +323,7 @@ body {
     right: 0;
     bottom: -25px;
     width: 340px;
-    z-index: 22;
+    z-index: 50;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -335,6 +340,9 @@ body {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 51;
+
 }
 
 .links a {
@@ -362,4 +370,111 @@ body {
     .scroll { display: none; }
     .portrait { height: 75%; bottom: -60px; }
     .bio { width: 90%; }
+}
+
+/* ===== CHATBOT CV ===== */
+
+.cv-bot {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    z-index: 9999;
+}
+
+.cv-bot-toggle {
+    width: 150px;
+    height: 150px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+    padding: 0;
+
+    overflow: hidden;
+
+    animation: floatBot 3s ease-in-out infinite;
+}
+
+.cv-bot-toggle img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes floatBot {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.cv-bot-box {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+
+    width: 260px;
+
+    background: rgba(18,18,20,.96);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(12px);
+
+    border-radius: 22px;
+
+    padding: 22px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition: all .35s ease;
+}
+
+.cv-bot-box.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cv-bot-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    color: white;
+}
+
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    background: var(--neon);
+    color: #111;
+
+    transition: all .25s ease;
+}
+
+.cv-download-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
 }
