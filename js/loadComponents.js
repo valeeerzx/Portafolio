@@ -123,7 +123,6 @@ function initProjectsAnimation() {
     const section = document.querySelector(".projects-section");
     if (!section) return;
 
-    // --- LÓGICA DE INTERSECTION OBSERVER (Lo que ya tenías) ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add("show");
@@ -131,28 +130,23 @@ function initProjectsAnimation() {
     }, { threshold: 0.3 });
     observer.observe(section);
 
-    // --- NUEVA LÓGICA DE PESTAÑAS DINÁMICAS ---
     const tabs = section.querySelectorAll('.tab');
     
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const targetId = tab.getAttribute('data-target');
 
-            // 1. Cambiar estado visual de las pestañas
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
-            // 2. Ocultar todos los contenidos actuales
             const contents = section.querySelectorAll('.tab-content');
             contents.forEach(c => c.classList.remove('active'));
 
-            // 3. Verificar si el contenido ya existe o hay que cargarlo
             const targetContainer = document.getElementById(targetId);
             
             if (targetContainer) {
                 targetContainer.classList.add('active');
                 
-                // Si el contenedor está vacío (solo tiene el ID pero no el contenido real), lo cargamos
                 if (targetContainer.innerHTML.trim() === "" || targetContainer.innerHTML.includes("Aquí aparecerán")) {
                     loadTabContent(targetId);
                 }
@@ -161,12 +155,10 @@ function initProjectsAnimation() {
     });
 }
 
-// Función auxiliar para cargar el HTML de la pestaña
 function loadTabContent(type) {
-    // Definimos qué archivo cargar según el ID
     const fileMap = {
         'certificados': 'components/certificados.html',
-        'tecnologias': 'components/tecnlogies.html' // Asegúrate que el nombre sea exacto
+        'tecnologias': 'components/tecnlogies.html'
     };
 
     const filePath = fileMap[type];

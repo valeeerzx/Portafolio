@@ -62,20 +62,18 @@
 </div>
 
 <style>
-/* ===== SECCIÓN ===== */
+    
 .certificados {
     background: transparent;
     padding: 60px 6%;
 }
 
-/* ===== GRID RESPONSIVO ===== */
 .certificados-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
 }
 
-/* ===== CARD ===== */
 .certificado-card {
     background: #111;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -95,7 +93,6 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* ===== IMAGEN ===== */
 .certificado-img {
     border-radius: 18px;
     aspect-ratio: 16 / 10;
@@ -118,7 +115,6 @@
     transform: scale(1.04);
 }
 
-/* ===== BADGE ===== */
 .certificado-badge {
     position: absolute;
     top: 10px;
@@ -133,7 +129,6 @@
     backdrop-filter: blur(4px);
 }
 
-/* ===== INFO ===== */
 .certificado-info {
     padding: 5px 10px;
 }
@@ -150,7 +145,6 @@
     color: #888;
 }
 
-/* ===== MODAL ===== */
 .modal {
     display: none;
     position: fixed;
@@ -196,13 +190,11 @@
     cursor: pointer;
 }
 
-/* ===== ANIMACIÓN ===== */
 @keyframes pop {
     from { transform: scale(0.92); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .certificados {
         padding: 40px 5%;
