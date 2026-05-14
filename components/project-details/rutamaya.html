@@ -44,10 +44,12 @@
                     <span>HTML5</span>
                     <span>CSS3</span>
                     <span>JavaScript</span>
-                    <span>Bootstrap</span>
+                    <span>Bootstrap 5</span>
                     <span>Yii Framework</span>
                     <span>JSON</span>
                     <span>PHP</span>
+                    <span>SSH</span>
+                    <span>Photoshop</span>
                     <span>Responsive</span>
                     <span>UI/UX</span>
                 </div>
@@ -58,7 +60,7 @@
 
             <div class="preview-card">
                 <div class="preview-image">
-                    <img src="../../img/projects/Rutamaya.jpeg" alt="Ruta Maya Travel">
+                    <img src="../../img/projects/Rutamaya.jpeg" alt="Ruta Maya Travel" onclick="openGallery(0)">
                 </div>
             </div>
 
@@ -483,7 +485,7 @@
         const modalImg = document.getElementById("galleryImage");
         const closeBtn = document.getElementById("closeGalleryBtn");
         const images = Array.from(
-            document.querySelectorAll(".gallery-grid img")
+            document.querySelectorAll(".preview-image img, .gallery-grid img")
         ).map(img => img.src);
         let index = 0;
 
@@ -517,4 +519,5 @@
         });
     });
 </script>
+
 </html>

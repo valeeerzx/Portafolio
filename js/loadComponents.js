@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 function startTypingEffect() {
     const texts = [
         "Fresh Graduate",
