@@ -17,7 +17,6 @@
             </p>
 
             <div class="stats-grid">
-
                 <div class="stat-card">
                     <div class="stat-number">6+</div>
                     <div class="stat-label">Tecnologías</div>
@@ -75,7 +74,6 @@
     <div class="full-gallery">
         <h2>Project Gallery</h2>
         <div class="gallery-grid">
-
             <div class="gallery-item large">
                 <img src="../../img/genessis/img1.jpeg" onclick="openGallery(0)">
             </div>
@@ -468,42 +466,54 @@
     }
 </style>
 
-
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const modal = document.getElementById("galleryModal");
         const modalImg = document.getElementById("galleryImage");
         const closeBtn = document.getElementById("closeGalleryBtn");
-        const images = Array.from(
+        const galleryImages = Array.from(
             document.querySelectorAll(".preview-image img, .gallery-grid img")
-        ).map(img => img.src);
+        );
+        const images = galleryImages.map(img => img.src);
 
         let index = 0;
 
-        window.openGallery = function (i) {
+        function openGallery(i) {
             index = i;
             modalImg.src = images[index];
             modal.classList.add("show");
-        };
+        }
 
-        window.closeGallery = function () {
-            modal.classList.remove("show");
-        };
-
-        window.changeImage = function (step) {
+        function changeImage(step) {
             index = (index + step + images.length) % images.length;
             modalImg.src = images[index];
-        };
+        }
+
+        function closeGallery() {
+            modal.classList.remove("show");
+        }
+
+        window.openGallery = openGallery;
+        window.changeImage = changeImage;
+        window.closeGallery = closeGallery;
+
+        galleryImages.forEach((img, i) => {
+            img.addEventListener("click", () => openGallery(i));
+        });
 
         closeBtn.addEventListener("click", closeGallery);
 
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeGallery();
+        });
+
         document.addEventListener("keydown", (e) => {
             if (!modal.classList.contains("show")) return;
+
             if (e.key === "ArrowRight") changeImage(1);
             if (e.key === "ArrowLeft") changeImage(-1);
             if (e.key === "Escape") closeGallery();
         });
-
     });
 </script>
 

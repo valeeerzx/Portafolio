@@ -479,45 +479,52 @@
 </style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("galleryModal");
+    const modalImg = document.getElementById("galleryImage");
+    const closeBtn = document.getElementById("closeGalleryBtn");
+    const galleryImages = Array.from(
+        document.querySelectorAll(".preview-image img, .gallery-grid img")
+    );
+    const images = galleryImages.map(img => img.src);
 
-        const modal = document.getElementById("galleryModal");
-        const modalImg = document.getElementById("galleryImage");
-        const closeBtn = document.getElementById("closeGalleryBtn");
-        const images = Array.from(
-            document.querySelectorAll(".preview-image img, .gallery-grid img")
-        ).map(img => img.src);
-        let index = 0;
+    let index = 0;
 
-        window.openGallery = function (i) {
-            index = i;
-            modalImg.src = images[index];
-            modal.classList.add("show");
-        };
+    function openGallery(i) {
+        index = i;
+        modalImg.src = images[index];
+        modal.classList.add("show");
+    }
 
-        window.closeGallery = function () {
-            modal.classList.remove("show");
-        };
+    function changeImage(step) {
+        index = (index + step + images.length) % images.length;
+        modalImg.src = images[index];
+    }
 
-        window.changeImage = function (step) {
-            index = (index + step + images.length) % images.length;
-            modalImg.src = images[index];
-        };
+    function closeGallery() {
+        modal.classList.remove("show");
+    }
 
-        closeBtn.addEventListener("click", closeGallery);
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                closeGallery();
-            }
-        });
+    window.openGallery = openGallery;
+    window.changeImage = changeImage;
+    window.closeGallery = closeGallery;
 
-        document.addEventListener("keydown", (e) => {
-            if (!modal.classList.contains("show")) return;
-            if (e.key === "ArrowRight") changeImage(1);
-            if (e.key === "ArrowLeft") changeImage(-1);
-            if (e.key === "Escape") closeGallery();
-        });
+    galleryImages.forEach((img, i) => {
+        img.addEventListener("click", () => openGallery(i));
     });
-</script>
 
-</html>
+    closeBtn.addEventListener("click", closeGallery);
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeGallery();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("show")) return;
+
+        if (e.key === "ArrowRight") changeImage(1);
+        if (e.key === "ArrowLeft") changeImage(-1);
+        if (e.key === "Escape") closeGallery();
+    });
+});
+</script>

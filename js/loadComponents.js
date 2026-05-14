@@ -107,7 +107,6 @@ function initAboutAnimation() {
             if (entry.isIntersecting) {
                 entry.target.classList.add("show");
 
-                // opcional: deja de observar después
                 observer.unobserve(entry.target);
             }
         });
