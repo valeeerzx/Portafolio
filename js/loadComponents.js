@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             container.innerHTML = data;
 
-            setTimeout(() => {
+            requestAnimationFrame(() => {
                 startTypingEffect();
                 initAboutAnimation();
-            }, 50);
+            });
         })
         .catch(err => console.error("Error cargando about:", err));
 
@@ -40,6 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => {
             console.error("ERROR PROJECTS:", err);
         });
+
+    fetch("components/contact.html")
+        .then(res => {
+            if (!res.ok) throw new Error("Contact no cargó");
+            return res.text();
+        })
+        .then(data => {
+            const container = document.getElementById("contact-section");
+            if (container) {
+                container.innerHTML = data;
+                initContactAnimation();
+            }
+        })
+        .catch(err => console.error("ERROR CONTACT:", err));
 
 });
 
@@ -89,14 +103,17 @@ function initAboutAnimation() {
     const about = document.querySelector(".about-section");
     if (!about) return;
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("show");
+
+                // opcional: deja de observar después
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.3
+        threshold: 0.15
     });
 
     observer.observe(about);
@@ -131,7 +148,7 @@ function initProjectsAnimation() {
     observer.observe(section);
 
     const tabs = section.querySelectorAll('.tab');
-    
+
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const targetId = tab.getAttribute('data-target');
@@ -143,10 +160,10 @@ function initProjectsAnimation() {
             contents.forEach(c => c.classList.remove('active'));
 
             const targetContainer = document.getElementById(targetId);
-            
+
             if (targetContainer) {
                 targetContainer.classList.add('active');
-                
+
                 if (targetContainer.innerHTML.trim() === "" || targetContainer.innerHTML.includes("Aquí aparecerán")) {
                     loadTabContent(targetId);
                 }
@@ -184,3 +201,40 @@ function openModal(el) {
 function closeModal() {
     document.getElementById("imageModal").style.display = "none";
 }
+
+function initContactAnimation() {
+    const section = document.querySelector(".contact-section");
+    if (!section) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+
+                const btn = entry.target.querySelector(".contact-circle-btn");
+                if (btn) btn.style.animation = "pulse 2s infinite";
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+}
+
+document.querySelectorAll('.nav-list a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+        }
+
+        navDropdown.classList.remove("is-active");
+        menuBtn.classList.remove("is-open");
+    });
+});

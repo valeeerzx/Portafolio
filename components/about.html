@@ -3,75 +3,113 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 180px 6% 120px;
-        gap: 60px;
-        font-family: Inter, system-ui, sans-serif;
-        color: var(--text);
+        gap: 80px;
+        padding: 260px 6% 140px;
         position: relative;
         z-index: 5;
-    }
-
-    .about-left,
-    .about-right {
+        font-family: Inter, system-ui, sans-serif;
+        color: var(--text);
+        overflow: hidden;
         opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
+        transform: translateY(80px);
+        transition:
+            opacity 1s ease,
+            transform 1s ease;
     }
 
-    .about-section.show .about-left,
-    .about-section.show .about-right {
+    .about-section.show {
         opacity: 1;
         transform: translateY(0);
     }
 
+    /* LEFT */
     .about-left {
         flex: 1;
+
+        opacity: 0;
+        transform: translateY(40px);
+
+        transition:
+            opacity 1s ease .15s,
+            transform 1s ease .15s;
+    }
+
+    .about-section.show .about-left {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .tag {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+
         font-size: 12px;
-        letter-spacing: 2px;
-        opacity: .7;
-        margin-bottom: 18px;
+        font-weight: 700;
+        letter-spacing: 3px;
+
         color: var(--neon);
+
+        margin-bottom: 22px;
+
+        text-transform: uppercase;
+    }
+
+    .tag::before {
+        content: "";
+        width: 40px;
+        height: 1px;
+        background: var(--neon);
+        opacity: .7;
     }
 
     .about-left h1 {
-        font-size: 64px;
-        line-height: 1.05;
-        margin-bottom: 20px;
+        font-size: clamp(48px, 7vw, 82px);
+        line-height: 0.95;
+
+        margin-bottom: 28px;
+
         font-weight: 800;
+        letter-spacing: -3px;
+
         font-family: "Space Grotesk", sans-serif;
     }
 
+    .about-left h1 span {
+        color: var(--neon);
+    }
+
     .about-left p {
-        font-size: 15px;
-        opacity: .85;
-        line-height: 1.7;
-        max-width: 480px;
+        font-size: 16px;
+        line-height: 1.9;
+
+        opacity: .82;
+
+        max-width: 560px;
     }
 
-    .quote {
-        margin-top: 18px;
-        font-style: italic;
-        opacity: .9;
-        border-left: 2px solid var(--neon);
-        padding-left: 12px;
-    }
-
+    /* TYPING */
     #typing-small {
+        display: inline-block;
+
         font-weight: 700;
         font-size: 14px;
-        letter-spacing: 1px;
+
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
         color: var(--neon);
+
+        min-height: 20px;
     }
 
     #typing-small::after {
         content: "|";
-        margin-left: 6px;
-        animation: blink 0.8s infinite;
+        margin-left: 5px;
+
         color: var(--neon);
+
+        animation: blink .8s infinite;
     }
 
     @keyframes blink {
@@ -80,34 +118,142 @@
         }
     }
 
-    .about-right img {
-        width: 340px;
-        border-radius: 150px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+    /* QUOTE */
+    .quote {
+        margin-top: 30px;
+
+        padding-left: 18px;
+
+        border-left: 2px solid var(--neon);
+
+        font-style: italic;
+        line-height: 1.7;
+
+        opacity: .88;
+
+        max-width: 520px;
+    }
+
+    /* RIGHT */
+    .about-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         opacity: 0;
-        transform: scale(0.85);
-        transition: all 0.8s ease;
+        transform: translateY(40px);
+
+        transition:
+            opacity 1s ease .35s,
+            transform 1s ease .35s;
+    }
+
+    .about-section.show .about-right {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .about-right img {
+        width: 360px;
+        max-width: 100%;
+
+        border-radius: 32px;
+
+        object-fit: cover;
+
+        box-shadow:
+            0 20px 70px rgba(0, 0, 0, .45),
+            0 0 40px rgba(0, 255, 170, .08);
+
+        transform: scale(.92) rotate(-2deg);
+
+        transition:
+            transform 1s ease,
+            box-shadow .5s ease;
     }
 
     .about-section.show .about-right img {
-        opacity: 1;
-        transform: scale(1);
+        transform: scale(1) rotate(0deg);
+    }
+
+    .about-right img:hover {
+        transform: scale(1.03) rotate(1deg);
+
+        box-shadow:
+            0 30px 90px rgba(0, 0, 0, .5),
+            0 0 60px rgba(0, 255, 170, .18);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+        .about-section {
+            gap: 50px;
+        }
+
+        .about-right img {
+            width: 300px;
+        }
     }
 
     @media (max-width: 980px) {
         .about-section {
-            flex-direction: column;
+            flex-direction: column-reverse;
+
             text-align: center;
-            padding: 120px 20px;
+
+            padding: 130px 24px 110px;
         }
 
-        .about-left h1 {
-            font-size: 42px;
+        .about-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-left p,
+        .quote {
+            max-width: 100%;
+        }
+
+        .quote {
+            border-left: none;
+            border-top: 2px solid var(--neon);
+
+            padding-left: 0;
+            padding-top: 18px;
+        }
+
+        .tag::before {
+            display: none;
         }
 
         .about-right img {
-            width: 240px;
+            width: 260px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .about-section {
+            padding: 110px 20px 90px;
+        }
+
+        .about-left h1 {
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .about-left p {
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .quote {
+            font-size: 14px;
+        }
+
+        .about-right img {
+            width: 220px;
+            border-radius: 24px;
         }
     }
 </style>
